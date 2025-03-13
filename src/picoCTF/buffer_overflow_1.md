@@ -1,4 +1,4 @@
-# picoCTF buffer overflow 1
+# picoCTF - Buffer Overflow 1
 
 This is the 'buffer overflow 1' level from picoCTF. It can be found here, along with the binary source code.
 
