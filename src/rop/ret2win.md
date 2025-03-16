@@ -1,8 +1,8 @@
 # Challenge 1 - ret2win
-
 ## Description
+This is the first of the ROP Emporium challenges. [ret2win](https://ropemporium.com/challenge/ret2win.html)
 
-ret2win means "return here to win" and it's recommended you start with this challenge.
+"ret2win means "return here to win" and it's recommended you start with this challenge."
 
 Let's start by inspecting the binary:
 ```

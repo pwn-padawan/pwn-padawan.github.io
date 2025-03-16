@@ -1,4 +1,4 @@
-# Fwordctf2020 Superez
+# Fword2020 Superez
 
 Let's begin by inspecting the file, and its protections:
 
