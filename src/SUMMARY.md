@@ -10,4 +10,5 @@
 - [Return Oriented Programming (ROP)]()
   - [Chall 1 - ret2win](./rop/ret2win.md)
   - [Chall 2 - split](./rop/split.md)
+  - [Chall 3 - callme](./rop/callme.md)
 
