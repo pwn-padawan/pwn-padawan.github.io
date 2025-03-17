@@ -62,7 +62,7 @@ pwndbg>
 This will come handy later on the challenge. 
 
 In Ghidra we can see the `pwnme()` function doing again the call on "read" for a size bigger that the variable storing it
-```
+```C
 void pwnme(void)
 
 {
@@ -153,7 +153,7 @@ pwndbg>
 We see our input starting at 0x7fffffffdd00 and the return address at 0x7fffffffdd28. This is an offset of 40 bytes.
 
 Let's now build our exploit:
-```
+```python
 #!/usr/bin/env python3
 
 from pwn import *

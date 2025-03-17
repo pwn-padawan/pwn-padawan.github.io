@@ -35,7 +35,7 @@ I don't know that! Auuuuuuuugh!
 
 Ok, not so useful. Let's open it on Ghidra to see what's happening. 
 
-```
+```C
 undefined4 main(void)
 
 {
@@ -184,7 +184,7 @@ $9 = 0x42424242
 
 We've succesfully overwrite the variable with the 4 'B', or in hex 0x42424242. So, we now should put the target value '0xdea110c8' to get the flag. Let's do it with pwntools.
 
-```
+```python
 #!/usr/bin/env python3
 from pwn import *
 p = process('/pwn-boy/pwn1')

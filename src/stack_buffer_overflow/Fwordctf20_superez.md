@@ -33,7 +33,7 @@ Ok, after opening the binary with Ghidra, there is a main function.
 
 It calls a function `print_header()` that prints on screen the text we just saw. After initializing a few variables, we see the following code snipet:
 
-```
+```C
     printf("Enter Your password to continue: ");
     gets(local_a8);
     printf("you typed \'%s\', Good Bye!\n",local_a8);
@@ -103,7 +103,7 @@ We should get the flag. If we do some math, we can substract the address at wher
 
 Let's build the exploit.
 
-```
+```python
 #!/usr/bin/env python3
 from pwn import *
 p = process('/pwn-boy/superez', stdin=PTY, stdout=PTY)

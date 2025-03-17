@@ -144,7 +144,7 @@ So, we know that 4 bytes after the return address, are stored arg1 and arg2.
 
 Now we can build out final exploit with the complete payload like this:
 
-```
+```python
 #!/usr/bin/env python3
 from pwn import *
 

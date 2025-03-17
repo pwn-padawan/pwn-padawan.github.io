@@ -4,7 +4,7 @@ This is the 'buffer overflow 0' level from picoCTF. It can be found here, along 
 
 Let's take a look at the code first:
 
-```
+```C
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -80,7 +80,7 @@ gdb ./vuln
 run
 ```
 It prompts for an input, so let's do "AAAA". And then continue until the breakpoint right after the gets:
-```C
+```
   0x56556463 <main+00e1>      call   0x56556130 <gets@plt>
 → 0x56556468 <main+00e6>      add    esp, 0x10
 ```

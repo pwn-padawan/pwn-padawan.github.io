@@ -42,7 +42,7 @@ There is a main function, that calls to another one called `pwnme()`.
 
 If we open this binary with Ghidra we can see what this `pwnme` function is doing more clearly, even though its not totally necesary. Let's take a look at the `main` and `pwnme` functions, as well as the "winning" function `ret2win`:
 
-```
+```C
 undefined8 main(void)
 
 {
@@ -137,8 +137,8 @@ So, if we substract the start of our input, to the target memory address, we'll 
 If we overwrite the actual address with the `ret2win` one, we should get the flag. 
 
 Using pwntools: 
-```
-m pwn import *
+```python
+from pwn import *
 
 binary_path = '/pwn-boy/ret2win'
 p = process(binary_path)
